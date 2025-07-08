@@ -9,11 +9,11 @@ export type User = {
 export type Flashcard = {
   id: number;
   word: string;
-  usphone?: string;
-  ukphone?: string;
+  usphone: string | null;
+  ukphone: string | null;
   meaning: string;
-  example?: string;
-  imageUrl?: string;
+  example: string | null;
+  imageUrl: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -22,11 +22,11 @@ export type UserFlashcardProgress = {
   id: number;
   userId: number;
   flashcardId: number;
-  difficulty: 1 | 2 | 3; // 1-简单，2-一般，3-困难
+  difficulty: number; // 1-简单，2-一般，3-困难
   nextReviewDate: string;
   reviewCount: number;
   correctCount: number;
-  lastReviewedAt?: string;
+  lastReviewedAt: string | null;
   createdAt: string;
 };
 
@@ -92,23 +92,66 @@ export interface FlashcardRawData {
   imageUrl: string;
 }
 
+// 预设的学习模式配置
+export const PRESET_CONFIGS = {
+  // 标准模式（适合大多数用户）
+  standard: {
+    algorithmType: 'anki' as const,
+    baseIntervals: { easy: [1, 4, 10], normal: [1, 2, 6], hard: [1, 1, 4] },
+    multipliers: { easy: 2.5, normal: 2.0, hard: 1.3 },
+    maxInterval: 365, minInterval: 1,
+    newCardSteps: [1, 10, 1440], lapseSteps: [10, 1440],
+    dailyNewCards: 20, dailyReviewCards: 200
+  },
+
+  // 快速模式（加速学习）
+  fast: {
+    algorithmType: 'anki' as const,
+    baseIntervals: { easy: [1, 3, 7], normal: [1, 2, 4], hard: [1, 1, 2] },
+    multipliers: { easy: 3.0, normal: 2.5, hard: 1.5 },
+    maxInterval: 180, minInterval: 1,
+    newCardSteps: [1, 5, 720], lapseSteps: [5, 720],
+    dailyNewCards: 30, dailyReviewCards: 300
+  },
+
+  // 保守模式（记忆更牢固）
+  conservative: {
+    algorithmType: 'anki' as const,
+    baseIntervals: { easy: [1, 5, 15], normal: [1, 3, 10], hard: [1, 2, 6] },
+    multipliers: { easy: 2.0, normal: 1.8, hard: 1.2 },
+    maxInterval: 730, minInterval: 1,
+    newCardSteps: [1, 15, 2880], lapseSteps: [15, 2880],
+    dailyNewCards: 10, dailyReviewCards: 100
+  },
+
+  // 自定义模式（用户完全控制）
+  custom: {
+    algorithmType: 'custom' as const,
+    baseIntervals: { easy: [1, 4, 10], normal: [1, 2, 6], hard: [1, 1, 4] },
+    multipliers: { easy: 2.5, normal: 2.0, hard: 1.3 },
+    maxInterval: 365, minInterval: 1,
+    newCardSteps: [1, 10, 1440], lapseSteps: [10, 1440],
+    dailyNewCards: 20, dailyReviewCards: 200
+  }
+};
+
 // 默认算法配置
-export const DEFAULT_ALGORITHM_CONFIG: SpacedRepetitionConfig = {
-  algorithmType: 'anki',
-  baseIntervals: {
-    easy: [1, 4, 10],
-    normal: [1, 2, 6],
-    hard: [1, 1, 4]
-  },
-  multipliers: {
-    easy: 2.5,
-    normal: 2.0,
-    hard: 1.3
-  },
-  maxInterval: 365,  // 最长一年
-  minInterval: 1,    // 最短一天
-  newCardSteps: [1, 10, 1440], // 1分钟、10分钟、1天
-  lapseSteps: [10, 1440],        // 10分钟、1天
-  dailyNewCards: 20,
-  dailyReviewCards: 200
-}; 
+export const DEFAULT_ALGORITHM_CONFIG: SpacedRepetitionConfig = PRESET_CONFIGS.standard;
+
+// 学习队列项接口
+export interface StudyQueueItem {
+  flashcard: Flashcard;
+  progress: UserFlashcardProgress;
+  isNew: boolean; // 是否是新卡片
+  isDue: boolean; // 是否到期需要复习
+}
+
+// 学习结果接口
+export interface StudyResult {
+  flashcardId: number;
+  difficulty: 1 | 2 | 3;
+  responseTime: number;
+  isCorrect: boolean;
+  nextReviewDate: string;
+  newInterval: number; // 天数
+} 
