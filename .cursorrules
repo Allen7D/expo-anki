@@ -1,0 +1,145 @@
+# React Native/Expo 项目
+
+你是 TypeScript、React Native、Expo 进行移动端 UI 开发的专家。
+
+每次选择应用规则时，请在输出中明确说明所应用的规则。你可以将规则描述缩写为单词或短语。
+
+## 项目背景
+
+## 代码风格和结构
+
+- 编写简洁、技术性的 TypeScript 代码，并提供准确示例
+- 使用函数式和声明式编程模式；避免使用类
+- 优先使用迭代和模块化而非代码重复
+- 使用带有辅助动词的描述性变量名（例如：isLoading, hasError）
+- 确保组件模块化、可重用且易于维护
+- 组件模块化：将组件分解为更小的、可重用的部分。保持组件专注于单一职责，代码行数不应超过 80 行
+- 安装新包时使用 `npx expo install <package-name>`
+- 页面的组件的管理按照就近原则管理，将组件放在同级目录下的 _components 文件夹中
+- 按照以下结构组织存储库文件：
+```
+src
+  ├── api   ## API 相关代码，主要使用 axios 和 react query
+  ├── app   ## expo router 的主入口点（基于文件的路由），可以找到屏幕和导航设置
+  ├── components  ## 共享组件
+  │   ├── card.tsx
+  │   └── ui  ## 核心 UI 组件：按钮、输入框等
+  ├── lib  ## 共享库：认证、环境变量、钩子、国际化、存储、测试工具、工具函数
+  ├── i18n  ## 应用的翻译文件
+  ├── types  ## 共享类型
+
+```
+
+## 技术栈
+
+- Expo
+- React Native
+- TypeScript
+- Expo Router
+- React Query 和 React Query Kit
+- Zustand
+- React Native Keyboard Controller
+- React Native SVG
+- React Native MMKV
+
+## 命名约定
+
+- 优先使用命名导出组件和工具函数
+- 对所有文件名和目录使用 kebab-case（例如：visa-form.tsx）
+
+## TypeScript 使用
+
+- 所有代码使用 TypeScript；优先使用 types 而非 interfaces
+- 避免使用枚举；使用带有 'as const' 断言的常量对象
+- 使用带有 TypeScript 接口的函数组件
+- 为扩展不同部分之间的消息传递定义严格类型
+- 对所有文件使用绝对导入 @/...
+- 除非有充分理由在该抽象层处理或转译错误，否则避免使用 try/catch 块
+- 为所有函数使用显式返回类型
+
+## 状态管理
+
+- 使用 React Zustand 进行全局状态管理
+- 在 useEffect 钩子中实现适当的清理
+
+## 语法和格式
+
+- 对纯函数使用 "function" 关键字
+- 避免在条件语句中使用不必要的花括号
+- 使用声明式 JSX
+- 为消息类型实现适当的 TypeScript 可区分联合类型
+
+## UI 和样式
+
+- 使用 `@components/ui` 中的内置 UI 组件，如 Button、Input 等
+- 使用 ARIA 角色和原生无障碍属性确保高可访问性(a11y)标准
+- 利用 react-native-reanimated 和 react-native-gesture-handler 实现高性能动画和手势
+- 通过适当地使用 memoizing 组件以及 useMemo 和 useCallback 钩子来避免不必要的重新渲染
+
+以下是使用的组件编写示例：
+
+```tsx
+import * as React from 'react';
+
+import { Text, View, Image, SavaAreaView } from '@/components/ui';
+
+// Props 应该在组件顶部定义
+type Props = {
+  text: string;
+};
+
+export function Title({ text }: Props) {
+  return (
+    <View className="flex-row items-center justify-center  py-4 pb-2">
+      <Text className="pr-2 text-2xl">{text}</Text>
+      <View className="h-[2px] flex-1 bg-neutral-300" />
+
+      <Image
+        source={require('@assets/images/demo.png')}
+        style={{ width: 24, height: 24 }}
+        contentFit="contain"
+      />
+    </View>
+  );
+}
+```
+
+## 错误处理
+
+- 适当记录错误以便调试
+- 提供用户友好的错误消息
+
+## 测试
+
+- 使用 Jest 和 React Native Testing Library 编写单元测试
+- 为工具函数和复杂组件编写单元测试
+- 测试文件应与组件文件同名但带有 .test.tsx 扩展名（例如：component-name.test.tsx）
+- 不要为仅显示数据的简单组件编写单元测试
+
+## Git 使用
+
+提交消息前缀：
+
+- "fix:" 用于错误修复
+- "feat:" 用于新功能
+- "perf:" 用于性能改进
+- "docs:" 用于文档更改
+- "style:" 用于格式修改
+- "refactor:" 用于代码重构
+- "test:" 用于添加缺失的测试
+- "chore:" 用于维护任务
+
+规则：
+
+- 提交消息使用小写
+- 保持摘要行简洁，最多 100 个字符
+- 在适用时引用问题编号
+
+## 文档
+
+- 维护清晰的 README，包含以下部分：
+  - 安装（如何安装和运行项目）
+  - 使用（列出所有命令及其使用方法）
+  - 技术栈（项目中使用的技术栈）
+  - 文件夹结构（项目的文件夹结构，仅包括 src 中的重要部分）
+  - 统一放在根目录的 docs 目录下进行维护管理
