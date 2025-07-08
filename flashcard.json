@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "word": "apple",
+    "usphone": "/ˈæpəl/",
+    "ukphone": "/ˈæpl/",
+    "meaning": "苹果",
+    "example": "I eat an apple every morning for breakfast.",
+    "imageUrl": "https://cdn.pixabay.com/photo/2016/11/30/15/00/apples-1872997_1280.jpg"
+  },
+  {
+    "id": 2,
+    "word": "book",
+    "usphone": "/bʊk/",
+    "ukphone": "/bʊk/",
+    "meaning": "书",
+    "example": "She reads a book before going to sleep every night.",
+    "imageUrl": "https://cdn.pixabay.com/photo/2015/11/19/21/10/glasses-1052010_1280.jpg"
+  },
+  {
+    "id": 3,
+    "word": "cat",
+    "usphone": "/kæt/",
+    "ukphone": "/kæt/",
+    "meaning": "猫",
+    "example": "The cat is sleeping on the sofa.",
+    "imageUrl": "https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_1280.jpg"
+  },
+  {
+    "id": 4,
+    "word": "dog",
+    "usphone": "/dɔːɡ/",
+    "ukphone": "/dɒɡ/",
+    "meaning": "狗",
+    "example": "My dog likes to play in the park.",
+    "imageUrl": "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_1280.jpg"
+  },
+  {
+    "id": 5,
+    "word": "fish",
+    "usphone": "/fɪʃ/",
+    "ukphone": "/fɪʃ/",
+    "meaning": "鱼",
+    "example": "There are many fish swimming in the pond.",
+    "imageUrl": "https://cdn.pixabay.com/photo/2016/12/31/21/22/fish-1943755_1280.jpg"
+  },
+  {
+    "id": 6,
+    "word": "house",
+    "usphone": "/haʊs/",
+    "ukphone": "/haʊs/",
+    "meaning": "房子",
+    "example": "They live in a big house with a garden.",
+    "imageUrl": "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg"
+  },
+  {
+    "id": 7,
+    "word": "moon",
+    "usphone": "/muːn/",
+    "ukphone": "/muːn/",
+    "meaning": "月亮",
+    "example": "The moon is bright tonight.",
+    "imageUrl": "https://cdn.pixabay.com/photo/2016/11/25/23/15/moon-1859616_1280.jpg"
+  },
+  {
+    "id": 8,
+    "word": "school",
+    "usphone": "/skuːl/",
+    "ukphone": "/skuːl/",
+    "meaning": "学校",
+    "example": "Children go to school to learn new things.",
+    "imageUrl": "https://cdn.pixabay.com/photo/2017/07/04/10/07/board-2470557_1280.jpg"
+  },
+  {
+    "id": 9,
+    "word": "tree",
+    "usphone": "/triː/",
+    "ukphone": "/triː/",
+    "meaning": "树",
+    "example": "Birds build nests in trees.",
+    "imageUrl": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
+  },
+  {
+    "id": 10,
+    "word": "water",
+    "usphone": "/ˈwɔːtər/",
+    "ukphone": "/ˈwɔːtə/",
+    "meaning": "水",
+    "example": "You should drink plenty of water every day.",
+    "imageUrl": "https://cdn.pixabay.com/photo/2014/12/24/05/02/drop-of-water-578897_1280.jpg"
+  }
+]
